@@ -9,29 +9,55 @@
     width: 150px;
     height: 150px;
   }
+  
+  td h1 {
+     margin: 0px;
+     text-align: center;
+  }
+  div#michi-game-table {
+    position:fixed;
+    top: 20%;
+    left: 50%;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+  }
+  
+  span#turn-a {
+    color: blue;
+    text-align: center;
+  }
+  span#turn-b {
+    color: red;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
-    <h1>Juego de michi Para dos</h1>
-    <div id="players">
-      <span id="turn-a"> Es tu turno jugador A</span>
+    <div id="michi-game-table">
+      <h1>Juego de michi Para dos</h1>
+      <div id="players">
+        <span id="turn-a"> Es tu turno jugador A</span>
+      </div>
+      <table border="1">
+        <tr id="row-0">
+          <td class="cel-0"></td>
+          <td class="cel-1"></td>
+          <td class="cel-2"></td>
+        </tr>
+        <tr id="row-1">
+          <td class="cel-0"></td>
+          <td class="cel-1"></td>
+          <td class="cel-2"></td>
+        </tr>
+        <tr id="row-2">
+          <td class="cel-0"></td>
+          <td class="cel-1"></td>
+          <td class="cel-2"></td>
+        </tr>
+      </table>
+      <span style="float: right;">Developed by <a href="https://twitter.com/@edutrul">@edutrul</a></span>
     </div>
-    <table border="1">
-      <tr id="row-0">
-        <td class="cel-0"></td>
-        <td class="cel-1"></td>
-        <td class="cel-2"></td>
-      </tr>
-      <tr id="row-1">
-        <td class="cel-0"></td>
-        <td class="cel-1"></td>
-        <td class="cel-2"></td>
-      </tr>
-      <tr id="row-2">
-        <td class="cel-0"></td>
-        <td class="cel-1"></td>
-        <td class="cel-2"></td>
-      </tr>
-    </table>
 </body>
 </html>

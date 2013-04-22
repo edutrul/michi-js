@@ -7,6 +7,9 @@
  * gmail account: luis.eduardo.telaya@gmail.com
  */
 
+/**
+ * Execute when document is ready.
+ */
 $(document).ready(function() {
   $('td').click(function() {
     if ($(this).find('h1').length == 0) {
@@ -25,14 +28,25 @@ $(document).ready(function() {
     }
   });
   
+  /**
+   * Verify winner.
+   */
   function verifyWinner() {
+    str_winner = null;
     if (winRowCell() == 'A' || winDiagonal() == 'A') {
-      alert('The Winner is player [A]');
-      document.location.reload();
-      
+      str_winner = 'The Winner is player [A]';
     }
     else if (winRowCell() == 'B' || winDiagonal() == 'B') {
-      alert('The Winner is player [B]');
+      str_winner = 'The Winner is player [B]';
+    }
+    // tie
+    else if ($('td h1').length == 9) {
+      str_winner = 'Tie!';
+    }
+    
+    // Show winner message and reload page.
+    if (str_winner) {
+      alert(str_winner);
       document.location.reload();
     }
   }
@@ -69,6 +83,9 @@ $(document).ready(function() {
   
   /**
    * Check if sb win using diagonal left or right.
+   * 
+   * @return string
+   *   A if player a wins, else B if player b wins.
    */
   function winDiagonal() {
     var player_str_a = 'X';
