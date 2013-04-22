@@ -13,17 +13,17 @@
 $(document).ready(function() {
   $('td').click(function() {
     if ($(this).find('h1').length == 0) {
-      if ($('div#players span').attr('id') == 'turn-a') {
+      if ($('#players span').attr('id') == 'turn-a') {
         $(this).append('<h1 style="color: blue">X</h1>');
         verifyWinner();
-        $('div#players span').attr('id', 'turn-b');
-        $('div#players span').html('Es el turno jugador B');
+        $('#players span').attr('id', 'turn-b');
+        $('#players span').html('Es el turno del jugador B');
       }
       else {
         $(this).append('<h1 style="color: red">O</h1>');
         verifyWinner();
-        $('div#players span').attr('id', 'turn-a');
-        $('div#players span').html('Es el turno jugador A');
+        $('#players span').attr('id', 'turn-a');
+        $('#players span').html('Es el turno del jugador A');
       }
     }
   });
@@ -34,10 +34,10 @@ $(document).ready(function() {
   function verifyWinner() {
     str_winner = null;
     if (winRowCell() == 'A' || winDiagonal() == 'A') {
-      str_winner = 'The Winner is player [A]';
+      str_winner = 'El ganador es el jugador [A]';
     }
     else if (winRowCell() == 'B' || winDiagonal() == 'B') {
-      str_winner = 'The Winner is player [B]';
+      str_winner = 'El ganador es el jugador [B]';
     }
     // tie
     else if ($('td h1').length == 9) {
@@ -46,6 +46,7 @@ $(document).ready(function() {
     
     // Show winner message and reload page.
     if (str_winner) {
+      $('#players span').html(str_winner);
       alert(str_winner);
       document.location.reload();
     }
@@ -61,10 +62,10 @@ $(document).ready(function() {
     for (r = 0; r < 2; r++) {
       for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
-          if ($('tr#row-' + (isRow ? i : j) + ' td.cel-' + (isRow ? j : i)).text() == 'X') {
+          if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'X') {
             player_a++;
           }
-          else if ($('tr#row-' + (isRow ? i : j) + ' td.cel-' + (isRow ? j : i)).text() == 'O'){
+          else if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'O'){
             player_b++;
           }
         }
@@ -92,15 +93,15 @@ $(document).ready(function() {
     var player_str_b = 'O';
     var player_str_turn = player_str_a;
     for (i = 0; i < 2; i++) {
-      if ($('tr#row-0 td.cel-0').text() == player_str_turn && 
-          $('tr#row-1 td.cel-1').text() == player_str_turn &&
-          $('tr#row-2 td.cel-2').text() == player_str_turn ) {
+      if ($('#row-0 .cel-0').text() == player_str_turn && 
+          $('#row-1 .cel-1').text() == player_str_turn &&
+          $('#row-2 .cel-2').text() == player_str_turn ) {
         return player_str_turn == player_str_a ? 'A' : 'B';
       }
       else if (
-        $('tr#row-0 td.cel-2').text() == player_str_turn && 
-        $('tr#row-1 td.cel-1').text() == player_str_turn &&
-        $('tr#row-2 td.cel-0').text() == player_str_turn
+        $('#row-0 .cel-2').text() == player_str_turn && 
+        $('#row-1 .cel-1').text() == player_str_turn &&
+        $('#row-2 .cel-0').text() == player_str_turn
         ) {
         return player_str_turn == player_str_a ? 'A' : 'B';
       }
