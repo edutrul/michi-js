@@ -41,7 +41,7 @@ $(document).ready(function() {
     }
     // tie
     else if ($('td h1').length == 9) {
-      str_winner = 'Tie!';
+      str_winner = 'Empate!';
     }
     
     // Show winner message and reload page.
