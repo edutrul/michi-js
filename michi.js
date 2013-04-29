@@ -59,26 +59,28 @@ $(document).ready(function() {
     player_a = 0;
     player_b = 0;
     isRow = true;
-    for (r = 0; r < 2; r++) {
-      for (i = 0; i < 3; i++) {
-        for (j = 0; j < 3; j++) {
-          if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'X') {
-            player_a++;
-          }
-          else if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'O'){
-            player_b++;
-          }
+    for (i = 0; i < 3; i++) {
+      for (j = 0; j < 3; j++) {
+        if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'X') {
+          player_a++;
         }
-        if (player_a == 3) {
-          return 'A';
+        else if ($('#row-' + (isRow ? i : j) + ' .cel-' + (isRow ? j : i)).text() == 'O'){
+          player_b++;
         }
-        else if (player_b == 3) {
-          return 'B';
-        }
-        player_a = 0;
-        player_b = 0;
       }
-      isRow = false;
+      if (player_a == 3) {
+        return 'A';
+      }
+      else if (player_b == 3) {
+        return 'B';
+      }
+      player_a = 0;
+      player_b = 0;
+      
+      if (i == 2 && isRow) {
+        isRow = false;
+        i = 0;
+      }
     }
   }
   
